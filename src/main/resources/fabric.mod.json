@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "sptp",
+  "version": "${version}",
+
+  "name": "SpectatorTp",
+  "description": "Bypass /tptoggle and tp cooldown with /sptp <nick>",
+  "authors": [
+    "FurnyGo",
+    "Zailer43",
+    "ate47"
+  ],
+  "contact": {
+    "sources": "https://github.com/FurnyGo/SpectatorTp"
+  },
+
+  "license": "MIT",
+  "icon": "assets/sptp/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "furnygo.sptp.SpTpMain"
+    ]
+  },
+  "mixins": [
+  ],
+
+  "depends": {
+    "fabricloader": "*",
+    "fabric-api": "*",
+    "minecraft": ">=1.19",
+    "java": ">=17"
+  }
+}
