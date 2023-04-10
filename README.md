@@ -9,6 +9,3 @@ When you send **/sptp** command, it sends spectator teleport packet
   
 Like this, but command  
 ![image](https://user-images.githubusercontent.com/68079109/224439169-9d280e26-ea4d-4897-85d4-bdbdf303831d.png)  
-### Thanks
-Zailer43 - ready-made command structure  
-ate47 - idea  
