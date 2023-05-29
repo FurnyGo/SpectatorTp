@@ -4,7 +4,7 @@ This is the port of [Spectator Teleporter](https://www.curseforge.com/minecraft/
   
 Download - [click](https://github.com/FurnyGo/SpectatorTp/releases/download/v1.0/sptp-1.0.jar)
 ## How it works?
-You need **/gamemode spectator** rights for this teleport  
+You need **/gamemode spectator** rights for this teleport (or warp with spectator mode)  
 When you send **/sptp** command, it sends spectator teleport packet  
   
 Like this, but command  
