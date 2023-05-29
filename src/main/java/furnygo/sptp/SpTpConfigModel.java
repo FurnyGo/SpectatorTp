@@ -6,9 +6,10 @@ import io.wispforest.owo.config.annotation.Modmenu;
 @Modmenu(modId = "sptp")
 @Config(name = "sptp-config", wrapperName = "SpTpConfig")
 public class SpTpConfigModel {
-    public boolean useCustomCommand = true;
-    public String customCommand = "/warp free_gmspec";
-    public String creativeCommand = "/gamemode creative";
-    public String survivalCommand = "/gamemode survival";
-    public String spectatorCommand = "/gamemode survival";
+    public boolean useTeleportToRegion = true;
+    public String teleportToRegionCommand = "warp free_spectator";
+    public int teleportToRegionCooldown = 100;
+    public String creativeCommand = "gamemode creative";
+    public String survivalCommand = "gamemode survival";
+    public String spectatorCommand = "gamemode survival";
 }

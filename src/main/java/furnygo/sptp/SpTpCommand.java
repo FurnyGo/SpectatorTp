@@ -44,6 +44,8 @@ public class SpTpCommand {
         LiteralArgumentBuilder<FabricClientCommandSource> sptpCommand = ClientCommandManager.literal("sptp");
 
         sptpCommand.then(ClientCommandManager.argument("nick", greedyString()).suggests(SUGGESTION_PLAYER).executes(ctx -> {
+            (new Thread(() -> {
+                try {
                     String nickname = ctx.getArgument("nick", String.class);
                     var MC = MinecraftClient.getInstance();
                     var network = MC.player.networkHandler;
@@ -60,8 +62,9 @@ public class SpTpCommand {
                     var playeruuid = nick.getProfile().getId();
 
                     if (MC.player.isCreative()){
-                        if (CONFIG.useCustomCommand()) {
-                            network.sendChatCommand(CONFIG.customCommand());
+                        if (CONFIG.useTeleportToRegion()) {
+                            network.sendChatCommand(CONFIG.teleportToRegionCommand());
+                            Thread.sleep(CONFIG.teleportToRegionCooldown());
                             network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
                         }
                         else {
@@ -71,8 +74,9 @@ public class SpTpCommand {
                         }
                     }
                     else if (MinecraftClient.getInstance().interactionManager.getCurrentGameMode() == GameMode.SURVIVAL){
-                        if (CONFIG.useCustomCommand()) {
-                            network.sendChatCommand(CONFIG.customCommand());
+                        if (CONFIG.useTeleportToRegion()) {
+                            network.sendChatCommand(CONFIG.teleportToRegionCommand());
+                            Thread.sleep(CONFIG.teleportToRegionCooldown());
                             network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
                         }
                         else {
@@ -82,9 +86,12 @@ public class SpTpCommand {
                         }
                     }
                     else network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
-                    return 1;
-                })
-        );
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            })).start();
+            return 1;
+        }));
         dispatcher.register(sptpCommand);
     }
 
