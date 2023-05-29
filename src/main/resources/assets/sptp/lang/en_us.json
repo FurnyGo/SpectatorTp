@@ -2,7 +2,7 @@
   "text.config.sptp-config.title": "SpectatorTp settings",
   "text.config.arttp-config.option.useTeleportToRegion": "Use a region with spectator mode",
   "text.config.arttp-config.option.teleportToRegionCommand": "Command for teleportation to the region",
-  "text.config.arttp-config.option.teleportToRegionCooldown": "The time between teleportation to the region and to the player",
+  "text.config.arttp-config.option.teleportToRegionCooldown": "The time between teleportation to the region and to the player (ms)",
   "text.config.arttp-config.option.creativeCommand": "Command to switch to creative mode",
   "text.config.arttp-config.option.survivalCommand": "Command to switch to survival mode",
   "text.config.arttp-config.option.spectatorCommand": "Command to switch to spectator mode"

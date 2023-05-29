@@ -2,7 +2,7 @@
   "text.config.sptp-config.title": "Настройки SpectatorTp",
   "text.config.arttp-config.option.useTeleportToRegion": "Использовать регион с режимом наблюдателя",
   "text.config.arttp-config.option.teleportToRegionCommand": "Команда для телепортации в регион",
-  "text.config.arttp-config.option.teleportToRegionCooldown": "Время между телепортацией на регион и к игроку",
+  "text.config.arttp-config.option.teleportToRegionCooldown": "Время между телепортацией на регион и к игроку (мс)",
   "text.config.arttp-config.option.creativeCommand": "Команда для перехода в режим креатива",
   "text.config.arttp-config.option.survivalCommand": "Команда для перехода в режим выживания",
   "text.config.arttp-config.option.spectatorCommand": "Команда для перехода в режим наблюдателя"

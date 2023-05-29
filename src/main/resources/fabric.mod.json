@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "SpectatorTp",
-  "description": "Bypass /tptoggle and tp cooldown with /sptp <nick>",
+  "description": "Adds command for teleport with spectator tp packets - /sptp <nick>",
   "authors": [
     "FurnyGo"
   ],
