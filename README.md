@@ -2,7 +2,7 @@
 With this mod, you can teleport with spectator tp packets via command in fabric minecraft 1.19.3+  
 This is the port of [Spectator Teleporter](https://www.curseforge.com/minecraft/mc-mods/gm3-teleporter) mod (forge 1.17) to fabric 1.19.3+  
   
-Download - [click](https://github.com/FurnyGo/SpectatorTp/releases/download/v1.2/sptp-1.2.jar)
+Download - [click](https://github.com/FurnyGo/SpectatorTp/releases/download/v1.2.1/sptp-1.2.1.jar)
 ## How it works?
 You need **/gamemode spectator** rights for this teleport (or warp with spectator mode)  
 When you send **/sptp** command, it sends spectator teleport packet  
