@@ -6,9 +6,7 @@
   "name": "SpectatorTp",
   "description": "Bypass /tptoggle and tp cooldown with /sptp <nick>",
   "authors": [
-    "FurnyGo",
-    "Zailer43",
-    "ate47"
+    "FurnyGo"
   ],
   "contact": {
     "sources": "https://github.com/FurnyGo/SpectatorTp"
@@ -28,8 +26,12 @@
 
   "depends": {
     "fabricloader": "*",
+    "owo": "*",
     "fabric-api": "*",
     "minecraft": ">=1.19",
     "java": ">=17"
+  },
+  "suggests": {
+    "modmenu": "*"
   }
 }

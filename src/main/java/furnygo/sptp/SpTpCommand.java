@@ -13,11 +13,13 @@ import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.network.packet.c2s.play.SpectatorTeleportC2SPacket;
 import net.minecraft.text.Text;
+import net.minecraft.world.GameMode;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
+import static furnygo.sptp.SpTpMain.CONFIG;
 
 public class SpTpCommand {
     public static final SuggestionProvider<FabricClientCommandSource> SUGGESTION_PLAYER = (context, builder) -> {
@@ -44,6 +46,7 @@ public class SpTpCommand {
         sptpCommand.then(ClientCommandManager.argument("nick", greedyString()).suggests(SUGGESTION_PLAYER).executes(ctx -> {
                     String nickname = ctx.getArgument("nick", String.class);
                     var MC = MinecraftClient.getInstance();
+                    var network = MC.player.networkHandler;
                     ClientPlayNetworkHandler handler = MinecraftClient.getInstance().getNetworkHandler();
                     if (handler == null) {
                         MC.inGameHud.getChatHud().addMessage(Text.of("§c§lYou are not on server\n"));
@@ -57,11 +60,28 @@ public class SpTpCommand {
                     var playeruuid = nick.getProfile().getId();
 
                     if (MC.player.isCreative()){
-                        MC.player.networkHandler.sendChatCommand("gamemode spectator");
-                        MC.player.networkHandler.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
-                        MC.player.networkHandler.sendChatCommand("gamemode creative");
+                        if (CONFIG.useCustomCommand()) {
+                            network.sendChatCommand(CONFIG.customCommand());
+                            network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
+                        }
+                        else {
+                            network.sendChatCommand(CONFIG.spectatorCommand());
+                            network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
+                            network.sendChatCommand(CONFIG.creativeCommand());
+                        }
                     }
-                    else MC.player.networkHandler.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
+                    else if (MinecraftClient.getInstance().interactionManager.getCurrentGameMode() == GameMode.SURVIVAL){
+                        if (CONFIG.useCustomCommand()) {
+                            network.sendChatCommand(CONFIG.customCommand());
+                            network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
+                        }
+                        else {
+                            network.sendChatCommand(CONFIG.spectatorCommand());
+                            network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
+                            network.sendChatCommand(CONFIG.survivalCommand());
+                        }
+                    }
+                    else network.sendPacket(new SpectatorTeleportC2SPacket(playeruuid));
                     return 1;
                 })
         );

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class SpTpMain implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("sptp");
+	public static final furnygo.sptp.SpTpConfig CONFIG = furnygo.sptp.SpTpConfig.createAndLoad();
 	@Override
 	public void onInitialize() {
 		ClientCommandRegistrationCallback.EVENT.register(SpTpCommand::registerCommands);
